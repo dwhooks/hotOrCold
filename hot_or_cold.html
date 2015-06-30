@@ -1,0 +1,53 @@
+<script>
+
+// program runs through Chrome console
+// generate a secret number between 1-100
+// user feedback per guess:
+// * +50 --> ice cold
+// * 30-50 --> cold
+// * 20-30 --> warm
+// * 10-20 --> hot
+// * 1-10 --> very hot
+// log feedback to console
+// guess counter to log # of guesses
+// list of previous guesses should be in the console on each guess
+// finish?: 1) start new game automatically; or 2) by running a function -
+//  newGame()
+
+var secretNumber = Math.floor((Math.random() * 100) + 1);
+var previousGuesses = [];
+var guessCounter = 0;
+console.log("Guess a number, please.");
+
+function submit(guess) {
+    var guessDiff;
+	if (secretNumber > guess) {
+		guessDiff = secretNumber - guess;
+	} else {
+		guessDiff = guess - secretNumber;
+	}
+
+    if(guess === secretNumber){
+        console.log("You got it!");
+        console.log("New game!");
+        secretNumber = Math.floor((Math.random() * 100) + 1);
+    } else if(guessDiff > 1 && guessDiff <= 10){
+        console.log("Very hot!");
+    } else if(guessDiff > 10 && guessDiff <= 20){
+        console.log("Hot!");
+    } else if(guessDiff > 20 && guessDiff <= 30){
+        console.log("Getting warmer...");
+    } else if(guessDiff > 30 && guessDiff <= 50){
+        console.log("Getting colder!");
+    } else if(guessDiff > 50 && guessDiff < 100){
+    	console.log("Ice cold!");
+    } else {
+    	console.log("Nope...guess again.");
+    }
+    previousGuesses.push(guess);
+    console.log(previousGuesses);
+    console.log(guessCounter += 1);
+	return null;
+}
+
+</script>
